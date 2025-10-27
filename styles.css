@@ -535,6 +535,13 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.skill-item img {
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: contain;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .skill-item:hover {
     transform: translateY(-6px) scale(1.1);
     border-color: var(--primary-color);
@@ -543,6 +550,10 @@ body {
 }
 
 .skill-item:hover i {
+    transform: scale(1.15);
+}
+
+.skill-item:hover img {
     transform: scale(1.15);
 }
 
