@@ -546,6 +546,23 @@ body {
     transform: scale(1.15);
 }
 
+.skill-text-only {
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.5rem;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.skill-text-only:hover {
+    transform: translateY(-6px) scale(1.1);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    background: rgba(0, 122, 255, 0.1);
+}
+
 @keyframes scrollSkills {
     0% {
         transform: translateX(0);
