@@ -1,3 +1,3 @@
 Personal website for Advait Darbare
 
-🌐 Live Site: https://advaitdarbare.github.io/websitePersonal/
+🌐 Live Site: https://advaitdarbare.github.io/
