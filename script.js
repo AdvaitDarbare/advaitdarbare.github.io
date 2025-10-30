@@ -340,11 +340,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Initial page load animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
+// Initial page load animation - removed duplicate animation
+// Body opacity is handled in DOMContentLoaded
