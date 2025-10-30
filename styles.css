@@ -169,13 +169,28 @@ body::before {
 
 .nav-logo {
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, #ffffff 0%, #FFA552 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding: 0.3rem 0.6rem;
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    border-radius: 8px;
 }
 
 .nav-logo:hover {
-    opacity: 0.7;
+    border-color: rgba(255, 107, 53, 0.6);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+    transform: scale(1.05);
 }
 
 .nav-menu {
@@ -1013,11 +1028,27 @@ body.menu-open { overflow: hidden; }
     color: #FFA552;
     text-decoration: none;
     transition: all 0.3s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.company-link::after {
+    content: '↗';
+    font-size: 0.8em;
+    opacity: 0.7;
+    transition: all 0.3s ease;
 }
 
 .company-link:hover {
     color: #FF6B35;
     text-decoration: underline;
+}
+
+.company-link:hover::after {
+    opacity: 1;
+    transform: translate(2px, -2px);
 }
 
 .exp-location {
@@ -1197,12 +1228,14 @@ body.menu-open { overflow: hidden; }
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    grid-auto-rows: 1fr;
 }
 
 .blog-card-link {
     text-decoration: none;
     color: inherit;
     display: block;
+    height: 100%;
 }
 
 .blog-card {
@@ -1212,12 +1245,15 @@ body.menu-open { overflow: hidden; }
     overflow: hidden;
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
-    display: block;
+    display: flex;
+    flex-direction: column;
     opacity: 0;
     transform: translateY(40px);
     backdrop-filter: blur(20px);
     position: relative;
     z-index: 1;
+    height: 100%;
+    min-height: 450px;
 }
 
 .blog-card.visible {
@@ -1300,6 +1336,9 @@ body.menu-open { overflow: hidden; }
 
 .blog-content {
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .blog-date {
@@ -1319,6 +1358,7 @@ body.menu-open { overflow: hidden; }
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
     line-height: 1.8;
+    flex: 1;
 }
 
 .blog-link {
