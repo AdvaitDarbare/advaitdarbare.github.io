@@ -185,6 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                // Close mobile menu if open
+                if (sideMenu && sideMenu.classList.contains('open')) {
+                    closeMenu();
+                }
+                // Use CSS scroll-padding for proper offset
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
