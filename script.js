@@ -286,13 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (menuBtn) {
         menuBtn.addEventListener('click', openMenu);
-        menuBtn.addEventListener('mouseenter', openMenu); // Open on hover
+        // Only add hover for non-touch devices
+        if (!isTouchDevice) {
+            menuBtn.addEventListener('mouseenter', openMenu);
+        }
     }
     if (menuClose) menuClose.addEventListener('click', closeMenu);
     if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
 
-    // Auto-close menu when cursor exits the menu
-    if (sideMenu) {
+    // Auto-close menu when cursor exits the menu - only for non-touch devices
+    if (sideMenu && !isTouchDevice) {
         sideMenu.addEventListener('mouseleave', closeMenu);
     }
 

@@ -160,11 +160,23 @@ body::before {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    /* Better touch targets */
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 .menu-toggle:hover, .menu-close:hover {
     background: rgba(79, 156, 249, 0.2);
     border-color: rgba(79, 156, 249, 0.6);
     box-shadow: 0 0 20px rgba(79, 156, 249, 0.3);
+}
+.menu-toggle:active, .menu-close:active {
+    background: rgba(79, 156, 249, 0.3);
+    transform: scale(0.95);
 }
 
 .nav-logo {
@@ -257,8 +269,21 @@ body::before {
 .side-menu.open { transform: translateX(0); }
 .menu-close { margin-bottom: 2rem; }
 .side-menu-links { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
-.side-link { text-decoration: none; color: var(--text-primary); font-size: 2rem; line-height: 1.1; }
+.side-link { 
+    text-decoration: none; 
+    color: var(--text-primary); 
+    font-size: 2rem; 
+    line-height: 1.1; 
+    padding: 0.5rem 0;
+    display: block;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
 .side-link:hover { color: #4F9CF9; }
+.side-link:active { 
+    color: #4F9CF9; 
+    transform: translateX(5px);
+}
 .side-menu-group { margin-top: 1rem; }
 .side-menu-label { color: var(--text-secondary); font-weight: 600; margin-bottom: 1rem; }
 .side-tags { display: flex; flex-direction: column; gap: 0.75rem; }
