@@ -1623,32 +1623,45 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 768px) {
     /* Navigation adjustments */
     .nav {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 0.75rem;
     }
     
     .nav-pill { 
-        width: calc(100% - 32px); 
-        padding: 0.6rem 1rem; 
+        width: calc(100% - 24px); 
+        padding: 0.6rem 0.8rem; 
         grid-template-columns: auto 1fr auto;
         gap: 0.5rem;
+        align-items: center;
     }
     
     .nav-logo {
         font-size: 1rem;
         padding: 0.2rem 0.4rem;
+        justify-self: center;
     }
     
     .nav-time {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
     }
     
     .menu-toggle {
         padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
     }
     
     .nav-icon {
         font-size: 1rem;
+    }
+    
+    .nav-left {
+        justify-content: flex-start;
+    }
+    
+    .nav-right {
+        gap: 8px;
+        justify-content: flex-end;
     }
     
     .nav-menu {
