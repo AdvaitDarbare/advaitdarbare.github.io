@@ -649,7 +649,7 @@ body.menu-open { overflow: hidden; }
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 4px 8px rgba(255, 99, 71, 0.5));
+    filter: drop-shadow(0 4px 8px rgba(79, 156, 249, 0.5));
     transform: translateY(-2px);
 }
 
@@ -924,6 +924,10 @@ body.menu-open { overflow: hidden; }
 .experience {
     background: transparent;
     padding: 0;
+}
+
+.experience .container {
+    padding: 8rem 2rem 0 2rem;
 }
 
 .experience-layout {
