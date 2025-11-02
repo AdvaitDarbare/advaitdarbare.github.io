@@ -248,25 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Custom Cursor - only on non-touch devices
-    const cursor = document.getElementById('cursor');
-    if (cursor && !isTouchDevice) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            if (!cursor.classList.contains('active')) {
-                cursor.classList.add('active');
-            }
-        });
-
-        // Add hover effect
-        const hoverElements = document.querySelectorAll('a, button, .project-card, .blog-card, .about-card, .contact-link');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-    }
-
     // Menu toggle wiring
     const menuBtn = document.querySelector('.menu-toggle');
     const sideMenu = document.getElementById('sideMenu');

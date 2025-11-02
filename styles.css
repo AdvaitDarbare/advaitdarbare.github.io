@@ -47,38 +47,6 @@ body {
     font-weight: 400;
     position: relative;
     z-index: 1;
-    cursor: none; /* Hide default cursor */
-    --cursor-size: 12px;
-}
-
-/* Custom Cursor */
-
-.cursor {
-    width: var(--cursor-size);
-    height: var(--cursor-size);
-    background: rgba(79, 156, 249, 0.8);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, opacity 0.2s;
-    opacity: 0;
-    box-shadow: 0 0 20px rgba(79, 156, 249, 0.6), 0 0 40px rgba(79, 156, 249, 0.3);
-}
-
-.cursor.active {
-    opacity: 1;
-}
-
-.cursor.hover {
-    width: calc(var(--cursor-size) * 2);
-    height: calc(var(--cursor-size) * 2);
-    background: rgba(79, 156, 249, 0.6);
-}
-
-a, button, .project-card, .blog-card, .about-card, .contact-link {
-    cursor: none;
 }
 
 /* Dark gradient with pure blue glow */
@@ -1649,19 +1617,6 @@ body.menu-open { overflow: hidden; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Disable custom cursor on mobile */
-    body {
-        cursor: auto;
-    }
-    
-    .cursor {
-        display: none;
-    }
-    
-    a, button, .project-card, .blog-card, .about-card, .contact-link {
-        cursor: pointer;
-    }
-    
     /* Navigation adjustments */
     .nav {
         padding: 0.75rem 1rem;
