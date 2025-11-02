@@ -1,6 +1,9 @@
 // All scripts moved to DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.opacity = '1';
+    
+    // Detect touch devices for conditional feature loading
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     // Intersection Observer for scroll animations
     const observerOptions = {
@@ -113,65 +116,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Enhanced 3D tilt effect for cards - reduced intensity for about and blog cards
-    document.querySelectorAll('.about-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (!card.classList.contains('visible')) return;
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 80;
-            const rotateY = (centerX - x) / 80;
+    // Enhanced 3D tilt effect for cards - only on non-touch devices
+    if (!isTouchDevice) {
+        // About cards - reduced intensity
+        document.querySelectorAll('.about-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (!card.classList.contains('visible')) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 80;
+                const rotateY = (centerX - x) / 80;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+        // Project cards - moderate tilt
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (!card.classList.contains('visible')) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 50;
+                const rotateY = (centerX - x) / 50;
 
-    // Project cards - moderate tilt
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (!card.classList.contains('visible')) return;
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 50;
-            const rotateY = (centerX - x) / 50;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+            });
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
-
-    // Blog cards - minimal tilt
-    document.querySelectorAll('.blog-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (!card.classList.contains('visible')) return;
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 100;
-            const rotateY = (centerX - x) / 100;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
+        // Blog cards - minimal tilt
+        document.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (!card.classList.contains('visible')) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 100;
+                const rotateY = (centerX - x) / 100;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
-    });
+    }
 
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -221,23 +227,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Magnetic effect for contact links
-    document.querySelectorAll('.contact-link').forEach(link => {
-        link.addEventListener('mousemove', (e) => {
-            if (!link.classList.contains('visible')) return;
-            const rect = link.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            link.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    // Magnetic effect for contact links - only on non-touch devices
+    if (!isTouchDevice) {
+        document.querySelectorAll('.contact-link').forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                if (!link.classList.contains('visible')) return;
+                const rect = link.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                link.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = '';
+            });
         });
-        link.addEventListener('mouseleave', () => {
-            link.style.transform = '';
-        });
-    });
+    }
 
-    // Custom Cursor
+    // Custom Cursor - only on non-touch devices
     const cursor = document.getElementById('cursor');
-    if (cursor) {
+    if (cursor && !isTouchDevice) {
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
