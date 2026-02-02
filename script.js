@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Menu toggle wiring
-    const menuBtn = document.querySelector('.menu-toggle');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-toggle');
     const sideMenu = document.getElementById('sideMenu');
     const menuBackdrop = document.getElementById('menuBackdrop');
     const menuClose = document.getElementById('menuClose');
@@ -270,40 +270,20 @@ document.addEventListener('DOMContentLoaded', () => {
         sideMenu.setAttribute('aria-hidden', 'true');
     }
 
-    if (menuBtn) {
-        menuBtn.addEventListener('click', openMenu);
-        // Only add hover for non-touch devices
-        if (!isTouchDevice) {
-            menuBtn.addEventListener('mouseenter', openMenu);
-        }
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', openMenu);
     }
     if (menuClose) menuClose.addEventListener('click', closeMenu);
     if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
-
-    // Auto-close menu when cursor exits the menu - only for non-touch devices
-    if (sideMenu && !isTouchDevice) {
-        sideMenu.addEventListener('mouseleave', closeMenu);
-    }
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
     });
     // Close when clicking any side-menu link
-    document.querySelectorAll('.side-link, .side-tag').forEach(el => {
+    document.querySelectorAll('.side-link').forEach(el => {
         el.addEventListener('click', closeMenu);
     });
 
-    // Optional: simple local time in nav
-    const navTime = document.getElementById('navTime');
-    if (navTime) {
-        const updateTime = () => {
-            const now = new Date();
-            const time = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-            navTime.textContent = `${Intl.DateTimeFormat().resolvedOptions().timeZone.split('/').pop()} ${time}`;
-        };
-        updateTime();
-        setInterval(updateTime, 60000);
-    }
 
     // Nav scroll effect
     const nav = document.getElementById('nav');
