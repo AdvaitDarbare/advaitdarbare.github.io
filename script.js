@@ -315,6 +315,152 @@ document.addEventListener('DOMContentLoaded', () => {
             }, index * 30);
         });
     }
+
+    // Project Modal Functionality
+    const projectData = {
+        'mcp-stock': {
+            icon: '📈',
+            title: 'LangGraph MCP AI Stock & Market Analysis Platform',
+            subtitle: 'MCP-compliant multi-agent system powered by Claude AI for real-time market intelligence',
+            overview: 'An advanced AI-powered stock market assistant that delivers real-time quotes, fundamentals, news, options chains, and historical charts. Built as an MCP-compliant multi-agent system that intelligently routes queries to specialized agents, providing seamless, context-aware market intelligence through Claude AI, LangGraph orchestration, and FastAPI backend.',
+            features: [
+                'Intelligent query routing with LLM-powered decision making',
+                'Real-time stock quotes and market data via Charles Schwab API',
+                'Company fundamentals, analyst ratings, and insider trading data',
+                'Multi-stock comparisons and historical performance analysis',
+                'Market movers tracking (top gainers, losers, most active)',
+                'Dynamic time range queries with intelligent parameter optimization',
+                'Multi-agent system with specialized tools for different data types',
+                'React frontend with real-time streaming responses',
+                'Comprehensive debug logging and error handling',
+                'LangGraph Studio integration for visual workflow debugging'
+            ],
+            architecture: 'The system uses a multi-agent architecture with a Router Agent that analyzes user queries and directs them to specialized agents (Stock Agent, Equity Insights Agent). Each agent has access to specific tools and APIs, ensuring efficient data retrieval. The LangGraph framework orchestrates communication between agents, while Claude AI provides natural language understanding. FastAPI serves as the backend framework, and React powers the interactive frontend with real-time updates.',
+            techStack: ['Python', 'LangGraph', 'Claude AI', 'FastAPI', 'React', 'TypeScript', 'Charles Schwab API', 'Finviz API', 'MCP Protocol', 'asyncio', 'LangSmith', 'Poetry'],
+            github: 'https://github.com/AdvaitDarbare/MCP_StockAssistant'
+        },
+        'standup-assistant': {
+            icon: '💬',
+            title: 'AI-Powered Standup Assistant',
+            subtitle: 'Automated team coordination tool with GPT-4 intelligence and Slack integration',
+            overview: 'An intelligent automation tool designed to streamline daily standup meetings by collecting team check-ins, generating AI-powered summaries, and posting updates to Slack. Features semantic search capabilities powered by ChromaDB and sentence transformers, enabling team members to quickly find relevant information from past standups.',
+            features: [
+                'Automated daily check-in collection with scheduling',
+                'GPT-4 powered intelligent summarization of team updates',
+                'Semantic search across historical standup data',
+                'Direct Slack integration for automatic posting',
+                'Real-time streaming responses with Server-Sent Events (SSE)',
+                'ChromaDB vector database for efficient similarity search',
+                'Streamlit-based user interface for easy interaction',
+                'Sentence transformer embeddings for context-aware search',
+                'Async operations for high performance',
+                'Configurable scheduling and notification system'
+            ],
+            architecture: 'Built on FastAPI for high-performance async operations, the system uses OpenAI GPT-4 for natural language processing and summarization. ChromaDB stores standup data as vector embeddings using sentence transformers, enabling semantic search. The Slack API integration automatically posts summaries, while a Streamlit interface provides easy interaction. Server-Sent Events enable real-time streaming of AI responses.',
+            techStack: ['Python', 'FastAPI', 'OpenAI GPT-4', 'Slack API', 'ChromaDB', 'Sentence Transformers', 'Streamlit', 'SSE', 'asyncio', 'Scheduler'],
+            github: 'https://github.com/AdvaitDarbare/standup-assistant'
+        },
+        'job-portal': {
+            icon: '💼',
+            title: 'Job Web Portal Application',
+            subtitle: 'Enterprise-grade job portal with role-based access and AWS deployment',
+            overview: 'A comprehensive full-stack job portal application built with Spring Boot 3 and deployed on AWS cloud infrastructure. Features secure user authentication, role-based access control, job posting management, and advanced search functionality. Designed following MVC architecture principles with enterprise-level security and scalability.',
+            features: [
+                'Secure user registration and authentication with Spring Security',
+                'Role-based access control (Job Seekers, Employers, Admins)',
+                'Job listing creation, management, and search functionality',
+                'Advanced filtering and search capabilities',
+                'Resume upload and management system',
+                'Application tracking for both seekers and employers',
+                'Admin dashboard for platform management',
+                'RESTful API design for extensibility',
+                'Responsive user interface for all device types',
+                'AWS cloud deployment with auto-scaling',
+                'CloudWatch monitoring and logging',
+                'RDS database with automated backups'
+            ],
+            architecture: 'Built using Spring Boot 3 with MVC architecture pattern, the application leverages Spring Security for authentication and authorization. Hibernate/JPA handles database operations with MySQL on AWS RDS. The application is deployed on AWS Elastic Beanstalk for auto-scaling, with CloudWatch providing monitoring and logging. RESTful APIs enable future mobile app integration.',
+            techStack: ['Java', 'Spring Boot 3', 'Spring MVC', 'Spring Security', 'Hibernate', 'JPA', 'MySQL', 'AWS EC2', 'AWS RDS', 'Elastic Beanstalk', 'CloudWatch', 'RESTful APIs'],
+            github: 'https://github.com/AdvaitDarbare/job-portal-web-application'
+        }
+    };
+
+    // Get modal elements
+    const modal = document.getElementById('projectModal');
+    const modalOverlay = modal?.querySelector('.modal-overlay');
+    const modalClose = modal?.querySelector('.modal-close');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalOverview = document.getElementById('modalOverview');
+    const modalFeatures = document.getElementById('modalFeatures');
+    const modalArchitecture = document.getElementById('modalArchitecture');
+    const modalTechStack = document.getElementById('modalTechStack');
+    const modalGithubLink = document.getElementById('modalGithubLink');
+
+    // Function to open modal
+    function openProjectModal(projectId) {
+        const project = projectData[projectId];
+        if (!project || !modal) return;
+
+        // Populate modal content
+        if (modalIcon) modalIcon.textContent = project.icon;
+        if (modalTitle) modalTitle.textContent = project.title;
+        if (modalSubtitle) modalSubtitle.textContent = project.subtitle;
+        if (modalOverview) modalOverview.textContent = project.overview;
+        if (modalArchitecture) modalArchitecture.textContent = project.architecture;
+        if (modalGithubLink) modalGithubLink.href = project.github;
+
+        // Populate features
+        if (modalFeatures) {
+            modalFeatures.innerHTML = project.features
+                .map(feature => `<li>${feature}</li>`)
+                .join('');
+        }
+
+        // Populate tech stack
+        if (modalTechStack) {
+            modalTechStack.innerHTML = project.techStack
+                .map(tech => `<div class="tech-stack-item">${tech}</div>`)
+                .join('');
+        }
+
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close modal
+    function closeProjectModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Add event listeners to Learn More buttons
+    const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+    learnMoreButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const projectId = btn.getAttribute('data-project');
+            openProjectModal(projectId);
+        });
+    });
+
+    // Close modal events
+    if (modalClose) {
+        modalClose.addEventListener('click', closeProjectModal);
+    }
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeProjectModal);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal?.classList.contains('active')) {
+            closeProjectModal();
+        }
+    });
 });
 
 // Initial page load animation - removed duplicate animation
