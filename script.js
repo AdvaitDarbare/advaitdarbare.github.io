@@ -397,6 +397,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalArchitecture = document.getElementById('modalArchitecture');
     const modalTechStack = document.getElementById('modalTechStack');
     const modalGithubLink = document.getElementById('modalGithubLink');
+    if (modalGithubLink) {
+        modalGithubLink.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const href = modalGithubLink.getAttribute('href');
+            if (href) {
+                window.open(href, '_blank', 'noopener');
+            }
+        });
+    }
 
     // Function to open modal
     function openProjectModal(projectId) {
@@ -409,7 +418,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalSubtitle) modalSubtitle.textContent = project.subtitle;
         if (modalOverview) modalOverview.textContent = project.overview;
         if (modalArchitecture) modalArchitecture.textContent = project.architecture;
-        if (modalGithubLink) modalGithubLink.href = project.github;
+        if (modalGithubLink) {
+            const card = document.querySelector(`.project-card[data-project="${projectId}"]`);
+            const cardGithub = card?.querySelector('.project-link');
+            modalGithubLink.href = cardGithub?.getAttribute('href') || project.github;
+        }
 
         // Populate features
         if (modalFeatures) {
@@ -426,6 +439,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Show modal
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.scrollTop = 0;
+        } else {
+            modal.scrollTop = 0;
+        }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
