@@ -320,24 +320,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectData = {
         'mcp-stock': {
             icon: '📈',
-            title: 'LangGraph MCP AI Stock & Market Analysis Platform',
-            subtitle: 'MCP-compliant multi-agent system powered by Claude AI for real-time market intelligence',
-            overview: 'An advanced AI-powered stock market assistant that delivers real-time quotes, fundamentals, news, options chains, and historical charts. Built as an MCP-compliant multi-agent system that intelligently routes queries to specialized agents, providing seamless, context-aware market intelligence through Claude AI, LangGraph orchestration, and FastAPI backend.',
+            title: 'AI Stock Assistant',
+            subtitle: 'Production-grade research platform with LangGraph multi-agent supervisor and institutional-style reports',
+            overview: 'A research-first stock analysis platform powered by a LangGraph multi-agent supervisor, Claude (Anthropic), and real-time market data from Schwab and Alpaca. Routes natural language queries through a dependency-aware agent graph, generates institutional-quality research reports, and streams results to a Next.js UI in real time. Follows a Hierarchical Multi-Agent Orchestration (HMAO) pattern with two tiers: parallel data researchers (market_data, fundamentals, sentiment, macro) and synthesis agents (technical_analysis, advisor).',
             features: [
-                'Intelligent query routing with LLM-powered decision making',
-                'Real-time stock quotes and market data via Charles Schwab API',
-                'Company fundamentals, analyst ratings, and insider trading data',
-                'Multi-stock comparisons and historical performance analysis',
-                'Market movers tracking (top gainers, losers, most active)',
-                'Dynamic time range queries with intelligent parameter optimization',
-                'Multi-agent system with specialized tools for different data types',
-                'React frontend with real-time streaming responses',
-                'Comprehensive debug logging and error handling',
-                'LangGraph Studio integration for visual workflow debugging'
+                'Chat interface — ask any financial question; supervisor decomposes into parallel research tasks',
+                'Report Lab — 10 institutional-style reports (Goldman Screener, Morgan DCF, Bridgewater Risk, Citadel Technical, Harvard Dividend, etc.)',
+                'Live market data — quotes, OHLCV, analyst ratings, insider trades, SEC filings, Reddit/news sentiment, FRED macro',
+                'Portfolio + trading — Schwab integration with mandatory human-in-the-loop (HITL) gate before orders',
+                'Memory — conversation history in Qdrant for semantic recall across sessions',
+                'Dependency-aware execution — Tier 1 researchers run in parallel; Tier 2 synthesizers wait on dependencies',
+                'Quality gate — reports scored across 7 checks; auto-repair for scores below 0.75',
+                '108 unit tests, zero LLM calls — comprehensive test suite with MLflow observability'
             ],
-            architecture: 'The system uses a multi-agent architecture with a Router Agent that analyzes user queries and directs them to specialized agents (Stock Agent, Equity Insights Agent). Each agent has access to specific tools and APIs, ensuring efficient data retrieval. The LangGraph framework orchestrates communication between agents, while Claude AI provides natural language understanding. FastAPI serves as the backend framework, and React powers the interactive frontend with real-time updates.',
-            techStack: ['Python', 'LangGraph', 'Claude AI', 'FastAPI', 'React', 'TypeScript', 'Charles Schwab API', 'Finviz API', 'MCP Protocol', 'asyncio', 'LangSmith', 'Poetry'],
+            architecture: 'Two-tier LangGraph StateGraph with a Planner LLM that produces an ExecutionPlan. The Router dispatches ready Tier 1 tasks (market_data, fundamentals, sentiment, macro) in parallel. A Research Gate synchronizes output, then Tier 2 agents (technical_analysis, advisor) run sequentially. The Report Engine bypasses the graph for named reports, using specialist builders and a quality gate. Redis caches market data; PostgreSQL stores portfolio/threads; Qdrant holds vector memory.',
+            techStack: ['Python', 'LangGraph', 'Claude', 'FastAPI', 'Next.js 14', 'Schwab API', 'Alpaca', 'Redis', 'PostgreSQL', 'Qdrant', 'MLflow', 'Finviz', 'FRED', '108 tests'],
             github: 'https://github.com/AdvaitDarbare/MCP_StockAssistant'
+        },
+        'ai-agents-dre': {
+            icon: '🔧',
+            title: 'Agentic Data Reliability Engineering (DRE)',
+            subtitle: 'Contract-first validation, anomaly detection, SLO enforcement, and human-in-the-loop remediation',
+            overview: 'An agentic data reliability control plane for local-first and enterprise data workflows. Validates incoming datasets against contracts, detects anomalies using statistical baselines (Z-Score, Robust MAD, IQR), evaluates SLOs, and routes data through active/pending/quarantine flows with Human-in-the-Loop (HITL) and Agentic Remediation controls. Uses LangGraph for durable state management and Agno + GPT-4o for AI copilot investigation.',
+            features: [
+                'Contract-first + HITL — unknown datasets move to pending_approval; AI generates YAML contract proposals; LangGraph interrupt/resume for durable approval workflow',
+                'Multi-stage reliability engine — Schema validation (DuckDB), data profiling, 6D quality scoring, anomaly detection with 3 concurrent statistical models',
+                'Emergency Force Load — manual bypass for blocked datasets with full audit logging',
+                'Next.js 15 Dashboard — Health Pulse, incident lifecycle, data lineage graph, workflow timeline',
+                'Agentic governance — RBAC, policy engine, AI copilot for root cause analysis, auto-remediation for schema fixes',
+                'Apache Doris load engine — high-performance Stream Load with auto-created tables',
+                'MCP integration — entire toolset exposed via Model Context Protocol for AI-assisted workflows',
+                'PostgreSQL 16 — unified store for runs, incidents, metric_history, learned_thresholds'
+            ],
+            architecture: 'Event-driven file watcher ingests files into data/landing. If no contract exists, LangGraph moves to pending_approval and generates AI proposals. On approval, full evaluation runs: Schema → Profiling → Anomaly → Routing (pass/quarantine). DuckDB handles in-memory profiling; PostgreSQL stores run_history, metric_history, incidents, and async_jobs. Next.js 15 + React 19 powers the operations dashboard. FastAPI backend with Pydantic v2.',
+            techStack: ['Python', 'LangGraph', 'Agno', 'GPT-4o', 'FastAPI', 'Next.js 15', 'React 19', 'PostgreSQL 16', 'DuckDB', 'Apache Doris', 'Tailwind', 'Lucide', 'MCP'],
+            github: 'https://github.com/AdvaitDarbare/ai-agents-dre'
         },
         'standup-assistant': {
             icon: '💬',
