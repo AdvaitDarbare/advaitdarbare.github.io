@@ -377,6 +377,40 @@ document.addEventListener('DOMContentLoaded', () => {
             techStack: ['Python', 'FastAPI', 'OpenAI GPT-4', 'Slack API', 'ChromaDB', 'Sentence Transformers', 'Streamlit', 'SSE', 'asyncio', 'Scheduler'],
             github: 'https://github.com/AdvaitDarbare/standup-assistant'
         },
+        'wikiwatch': {
+            icon: '📊',
+            title: 'WikiWatch',
+            subtitle: 'Real-time Wikipedia anomaly detection pipeline with distributed stream processing and ML scoring',
+            overview: 'A high-throughput monitoring system that detects behavioral anomalies (vandalism, bot swarms) in the live Wikipedia edit stream. The architecture mirrors industrial network telemetry systems, utilizing a Kafka-Flink pipeline for stateful aggregation and a PyTorch MLP for real-time scoring. Features a live-updating dashboard that visualizes edit bursts and anomaly trends across the global encyclopedia.',
+            features: [
+                'Real-time Ingestion — Consumes the Wikimedia SSE stream via a dedicated producer, filtering and routing events into Kafka',
+                'Windowed Analytics — Implements PyFlink 5-minute tumbling windows to calculate per-article metrics like edit velocity and anonymous user ratios',
+                'Behavioral Scoring — PyTorch MLP classifies windows as anomalous based on historical patterns, featuring input clipping to handle extreme data spikes',
+                'Self-Correction — Model trained on 10k samples with an automated retraining loop that leverages live "ground truth" labels from PostgreSQL',
+                'Live Dashboard — Full-stack React and FastAPI interface with real-time score updates and historical trend visualization via Recharts',
+                'Distributed Infra — Fully containerized deployment across 9 services including a multi-node Flink cluster (JobManager/TaskManager)'
+            ],
+            architecture: 'The system uses a producer to write filtered edits to Kafka, which serves as the buffer for a PyFlink job. Flink performs keyed window aggregations and sinks metrics to PostgreSQL. A separate ML Inference service polls for new windows, calculates anomaly scores (0–1), and updates the DB. The FastAPI backend serves these scores to the React frontend, while a Retrain worker periodically updates the model weights based on accumulated window data.',
+            techStack: ['Python', 'PyFlink', 'PyTorch', 'FastAPI', 'Apache Kafka', 'Apache Flink', 'PostgreSQL', 'Docker', 'Docker Compose', 'React', 'Tailwind CSS', 'Recharts', 'Wikimedia SSE API'],
+            github: 'https://github.com/AdvaitDarbare/WikiWatch'
+        },
+        'tariffpulse': {
+            icon: '🏭',
+            title: 'TariffPulse',
+            subtitle: 'Multi-agent platform for quantifying semiconductor supply chain risk and tariff exposure using Knowledge Graphs and agentic RAG',
+            overview: 'An intelligence platform designed to map and quantify how trade policy shocks (e.g., China chip tariffs) propagate through complex semiconductor supply chains. It utilizes a Hierarchical Multi-Agent Orchestration pattern to traverse a Neo4j Knowledge Graph, perform hybrid RAG over SEC filings, and calculate exposure scores. The system features a live-streaming analysis engine that renders interactive propagation graphs in real time.',
+            features: [
+                'Multi-Agent Supervisor — Orchestrates 4 specialized agents (Policy, Research, Analysis, Critique) via AutoGen 0.4, featuring a "Critique-Loop" for automated re-retrieval and gap detection',
+                'Supply Chain Propagation — Performs multi-hop Neo4j traversal (Direct Producer → Upstream Supplier → Downstream Buyer) to identify hidden dependencies up to 4 nodes deep',
+                'Agentic RAG — Executes hybrid BM25 and semantic search across 400+ SEC 10-K document chunks in Weaviate to provide documentary evidence for every supply chain relationship',
+                'Exposure Modeling — Implements a weighted scoring algorithm (0–100 scale) calibrated across geographic concentration, margin sensitivity, and revenue dependency',
+                'Real-Time Streaming — Utilizes FastAPI SSE and asyncio.Queue to stream live agent reasoning and node-by-node graph animations to a Next.js frontend',
+                'Production Observability — Integrated with AgentOps for full session tracing and LlamaParse for complex PDF ingestion of USTR policy documents'
+            ],
+            architecture: 'The system employs a SelectorGroupChat where a GPT-4o supervisor routes tasks to parallel Tier-1 agents (Policy Scraper and Research). A Research Gate synchronizes the Knowledge Graph paths and vector search results before Tier-2 Analysis agents generate the final report. The data layer uses Neo4j AuraDB for relationship mapping, Weaviate for vector memory, and PostgreSQL for job state.',
+            techStack: ['Python', 'FastAPI', 'AutoGen 0.4', 'LlamaIndex', 'TypeScript', 'Next.js 15', '@xyflow/react', 'shadcn/ui', 'Neo4j', 'Weaviate', 'PostgreSQL', 'Docker', 'Docker Compose', 'OpenAI GPT-4o', 'Tavily API', 'AgentOps'],
+            github: 'https://github.com/AdvaitDarbare/TariffPulse'
+        },
         'job-portal': {
             icon: '💼',
             title: 'Job Web Portal Application',
