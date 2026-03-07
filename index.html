@@ -54,11 +54,23 @@
             </div>
             <div class="nav-right">
                 <a href="#contact" class="nav-cta">Get in touch</a>
+                <button class="mobile-menu-toggle" aria-label="Open menu">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
             </div>
         </div>
         <div class="menu-backdrop" id="menuBackdrop"></div>
         <aside class="side-menu" id="sideMenu" aria-hidden="true">
-            <button class="menu-close" id="menuClose">Close ✕</button>
+            <div class="side-menu-header">
+                <span class="side-menu-logo">Advait Darbare</span>
+                <button class="menu-close" id="menuClose" aria-label="Close menu">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
             <nav class="side-menu-links">
                 <a href="#about" class="side-link">About</a>
                 <a href="#experience" class="side-link">Experience</a>
@@ -67,7 +79,6 @@
                 <a href="#contact" class="side-link">Get in touch</a>
             </nav>
         </aside>
-        <button class="mobile-menu-toggle" aria-label="Open menu">☰</button>
     </nav>
 
     <!-- Hero Section -->
@@ -116,76 +127,106 @@
     <!-- Skills Section -->
     <section class="section skills" id="skills">
         <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-marquee">
-                <div class="skills-track">
-                    <div class="skill-item skill-text-only" title="AWS Certified Cloud Practitioner">AWS CCP</div>
-                    <div class="skill-item" title="Java"><i class="devicon-java-plain"></i></div>
-                    <div class="skill-item" title="C"><i class="devicon-c-plain"></i></div>
-                    <div class="skill-item" title="C++"><i class="devicon-cplusplus-plain"></i></div>
-                    <div class="skill-item" title="Python"><i class="devicon-python-plain"></i></div>
-                    <div class="skill-item" title="SQL"><i class="devicon-postgresql-plain"></i></div>
-                    <div class="skill-item" title="R"><i class="devicon-r-plain"></i></div>
-                    <div class="skill-item" title="HTML"><i class="devicon-html5-plain"></i></div>
-                    <div class="skill-item" title="CSS"><i class="devicon-css3-plain"></i></div>
-                    <div class="skill-item" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
-                    <div class="skill-item" title="Spring Boot"><i class="devicon-spring-plain"></i></div>
-                    <div class="skill-item" title="Node.js"><i class="devicon-nodejs-plain"></i></div>
-                    <div class="skill-item" title="React.js"><i class="devicon-react-original"></i></div>
-                    <div class="skill-item skill-text-only" title="Next.js">Next.js</div>
-                    <div class="skill-item skill-text-only" title="FastAPI">FastAPI</div>
-                    <div class="skill-item skill-text-only" title="LangGraph">LangGraph</div>
-                    <div class="skill-item skill-text-only" title="LangChain">LangChain</div>
-                    <div class="skill-item skill-text-only" title="OpenAI">OpenAI</div>
-                    <div class="skill-item skill-text-only" title="Airflow">Airflow</div>
-                    <div class="skill-item skill-text-only" title="PySpark">PySpark</div>
-                    <div class="skill-item skill-text-only" title="Pandas">Pandas</div>
-                    <div class="skill-item skill-text-only" title="Scikit-learn">Scikit-learn</div>
-                    <div class="skill-item" title="PyTorch"><i class="devicon-pytorch-original"></i></div>
-                    <div class="skill-item" title="TensorFlow"><i class="devicon-tensorflow-original"></i></div>
-                    <div class="skill-item skill-text-only" title="MLflow">MLflow</div>
-                    <div class="skill-item" title="AWS"><i class="devicon-amazonwebservices-original"></i></div>
-                    <div class="skill-item" title="PostgreSQL"><i class="devicon-postgresql-plain"></i></div>
-                    <div class="skill-item" title="MySQL"><i class="devicon-mysql-plain"></i></div>
-                    <div class="skill-item" title="MongoDB"><i class="devicon-mongodb-plain"></i></div>
-                    <div class="skill-item skill-text-only" title="ChromaDB">ChromaDB</div>
-                    <div class="skill-item" title="Docker"><i class="devicon-docker-plain"></i></div>
-                    <div class="skill-item" title="Git"><i class="devicon-git-plain"></i></div>
-                    <div class="skill-item skill-text-only" title="CI/CD">CI/CD</div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="skill-item skill-text-only" title="AWS Certified Cloud Practitioner">AWS CCP</div>
-                    <div class="skill-item" title="Java"><i class="devicon-java-plain"></i></div>
-                    <div class="skill-item" title="C"><i class="devicon-c-plain"></i></div>
-                    <div class="skill-item" title="C++"><i class="devicon-cplusplus-plain"></i></div>
-                    <div class="skill-item" title="Python"><i class="devicon-python-plain"></i></div>
-                    <div class="skill-item" title="SQL"><i class="devicon-postgresql-plain"></i></div>
-                    <div class="skill-item" title="R"><i class="devicon-r-plain"></i></div>
-                    <div class="skill-item" title="HTML"><i class="devicon-html5-plain"></i></div>
-                    <div class="skill-item" title="CSS"><i class="devicon-css3-plain"></i></div>
-                    <div class="skill-item" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
-                    <div class="skill-item" title="Spring Boot"><i class="devicon-spring-plain"></i></div>
-                    <div class="skill-item" title="Node.js"><i class="devicon-nodejs-plain"></i></div>
-                    <div class="skill-item" title="React.js"><i class="devicon-react-original"></i></div>
-                    <div class="skill-item skill-text-only" title="Next.js">Next.js</div>
-                    <div class="skill-item skill-text-only" title="FastAPI">FastAPI</div>
-                    <div class="skill-item skill-text-only" title="LangGraph">LangGraph</div>
-                    <div class="skill-item skill-text-only" title="LangChain">LangChain</div>
-                    <div class="skill-item skill-text-only" title="OpenAI">OpenAI</div>
-                    <div class="skill-item skill-text-only" title="Airflow">Airflow</div>
-                    <div class="skill-item skill-text-only" title="PySpark">PySpark</div>
-                    <div class="skill-item skill-text-only" title="Pandas">Pandas</div>
-                    <div class="skill-item skill-text-only" title="Scikit-learn">Scikit-learn</div>
-                    <div class="skill-item" title="PyTorch"><i class="devicon-pytorch-original"></i></div>
-                    <div class="skill-item" title="TensorFlow"><i class="devicon-tensorflow-original"></i></div>
-                    <div class="skill-item skill-text-only" title="MLflow">MLflow</div>
-                    <div class="skill-item" title="AWS"><i class="devicon-amazonwebservices-original"></i></div>
-                    <div class="skill-item" title="PostgreSQL"><i class="devicon-postgresql-plain"></i></div>
-                    <div class="skill-item" title="MySQL"><i class="devicon-mysql-plain"></i></div>
-                    <div class="skill-item" title="MongoDB"><i class="devicon-mongodb-plain"></i></div>
-                    <div class="skill-item skill-text-only" title="ChromaDB">ChromaDB</div>
-                    <div class="skill-item" title="Docker"><i class="devicon-docker-plain"></i></div>
-                    <div class="skill-item" title="Git"><i class="devicon-git-plain"></i></div>
-                    <div class="skill-item skill-text-only" title="CI/CD">CI/CD</div>
+            <span class="section-label">Skills</span>
+            <h2 class="section-title">What I work with</h2>
+
+            <!-- Credentials -->
+            <div class="skills-credentials">
+                <div class="credential-cert">
+                    <svg class="cert-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 1l1.545 3.09L12 4.635l-2.5 2.43.59 3.435L7 8.91l-3.09 1.59L4.5 7.065 2 4.635l3.455-.545L7 1z" fill="currentColor"/>
+                    </svg>
+                    AWS Certified Cloud Practitioner
+                </div>
+                <div class="credentials-badges">
+                    <span class="badge-item">AWS Cloud Quest: Generative AI Practitioner</span>
+                    <span class="badge-item">AWS Cloud Quest: Data Analytics</span>
+                    <span class="badge-item">Databricks AI Agent Fundamentals</span>
+                    <span class="badge-item">Databricks Lakehouse Fundamentals</span>
+                    <span class="badge-item">Databricks Generative AI Fundamentals</span>
+                    <span class="badge-item">Lean Six Sigma White Belt</span>
+                </div>
+            </div>
+
+            <!-- Skill Categories -->
+            <div class="skills-table">
+                <div class="skill-row">
+                    <span class="skill-category">Languages</span>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">C / C++</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">R</span>
+                        <span class="skill-pill">HTML</span>
+                        <span class="skill-pill">CSS</span>
+                        <span class="skill-pill">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-category">Backend & Frontend</span>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Spring Boot</span>
+                        <span class="skill-pill">Spring AI</span>
+                        <span class="skill-pill">FastAPI</span>
+                        <span class="skill-pill">Node.js</span>
+                        <span class="skill-pill">Express</span>
+                        <span class="skill-pill">React.js</span>
+                        <span class="skill-pill">Next.js</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-category">Data & ML/AI</span>
+                    <div class="skill-pills">
+                        <span class="skill-pill">LangGraph</span>
+                        <span class="skill-pill">LangChain</span>
+                        <span class="skill-pill">AutoGen</span>
+                        <span class="skill-pill">LlamaIndex</span>
+                        <span class="skill-pill">OpenAI API</span>
+                        <span class="skill-pill">Ollama</span>
+                        <span class="skill-pill">PyTorch</span>
+                        <span class="skill-pill">TensorFlow</span>
+                        <span class="skill-pill">Scikit-learn</span>
+                        <span class="skill-pill">PySpark</span>
+                        <span class="skill-pill">Airflow</span>
+                        <span class="skill-pill">dbt</span>
+                        <span class="skill-pill">Pandas</span>
+                        <span class="skill-pill">NumPy</span>
+                        <span class="skill-pill">MLflow</span>
+                        <span class="skill-pill">AgentOps</span>
+                        <span class="skill-pill">FAISS</span>
+                        <span class="skill-pill">Neo4j</span>
+                        <span class="skill-pill">LangSmith</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-category">Cloud & Databases</span>
+                    <div class="skill-pills">
+                        <span class="skill-pill">AWS</span>
+                        <span class="skill-pill">Snowflake</span>
+                        <span class="skill-pill">Databricks</span>
+                        <span class="skill-pill">PostgreSQL</span>
+                        <span class="skill-pill">pgvector</span>
+                        <span class="skill-pill">MySQL</span>
+                        <span class="skill-pill">MongoDB</span>
+                        <span class="skill-pill">DuckDB</span>
+                        <span class="skill-pill">Firebase</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-category">Dev Tools</span>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">CI/CD</span>
+                        <span class="skill-pill">JUnit</span>
+                        <span class="skill-pill">Streamlit</span>
+                        <span class="skill-pill">Matplotlib</span>
+                        <span class="skill-pill">Seaborn</span>
+                        <span class="skill-pill">Kaggle</span>
+                        <span class="skill-pill">Claude Code</span>
+                        <span class="skill-pill">Cursor</span>
+                    </div>
                 </div>
             </div>
         </div>
