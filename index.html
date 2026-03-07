@@ -14,10 +14,10 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Advait Darbare | CS @ ASU | AI & Agentic Systems" />
     <meta name="twitter:description" content="Computer Science at ASU. Building agentic AI systems, multi-agent orchestration, and scalable backend platforms." />
-    <link rel="stylesheet" href="styles.css?v=20260223">
+    <link rel="stylesheet" href="styles.css?v=20260223-v2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <script type="application/ld+json">
     {
@@ -36,35 +36,35 @@
       }
     }
     </script>
-  </head>
+</head>
 <body>
-    <!-- Navigation - H2O.ai Style -->
+    <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="#hero" class="nav-logo">AD</a>
+                <a href="#hero" class="nav-logo">Advait Darbare</a>
             </div>
             <div class="nav-center">
                 <ul class="nav-menu">
-                    <li><a href="#about" class="nav-link">ABOUT</a></li>
-                    <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
-                    <li><a href="#projects" class="nav-link">PROJECTS</a></li>
-                    <li><a href="#blog" class="nav-link">INSIGHTS</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#blog" class="nav-link">Insights</a></li>
                 </ul>
             </div>
             <div class="nav-right">
-                <a href="#contact" class="nav-cta">GET IN TOUCH</a>
+                <a href="#contact" class="nav-cta">Get in touch</a>
             </div>
         </div>
         <div class="menu-backdrop" id="menuBackdrop"></div>
         <aside class="side-menu" id="sideMenu" aria-hidden="true">
-            <button class="menu-close" id="menuClose" aria-label="Close menu">Close ✕</button>
+            <button class="menu-close" id="menuClose">Close ✕</button>
             <nav class="side-menu-links">
                 <a href="#about" class="side-link">About</a>
                 <a href="#experience" class="side-link">Experience</a>
                 <a href="#projects" class="side-link">Projects</a>
                 <a href="#blog" class="side-link">Insights</a>
-                <a href="#contact" class="side-link">Get in Touch</a>
+                <a href="#contact" class="side-link">Get in touch</a>
             </nav>
         </aside>
         <button class="mobile-menu-toggle" aria-label="Open menu">☰</button>
@@ -73,37 +73,40 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
+            <div class="hero-badge">CS @ Arizona State University · Graduating May 2026</div>
             <h1 class="hero-title">Advait Darbare</h1>
-            <p class="hero-subtitle">CS @ ASU · Graduating May 2026</p>
+            <p class="hero-subtitle">Building agentic AI systems, multi-agent orchestration, and scalable backend platforms.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="hero-btn-primary">View projects</a>
+                <a href="#contact" class="hero-btn-secondary">Get in touch</a>
+            </div>
             <div class="hero-scroll">
                 <div class="scroll-indicator"></div>
             </div>
-        </div>
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="section about" id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="about-header">
+                <span class="section-label">About</span>
+                <h2 class="section-title">Who I am</h2>
+            </div>
             <div class="about-content">
                 <div class="about-card">
-                    <div class="card-icon">👨‍💻</div>
-                    <h3>Who I Am</h3>
+                    <span class="card-icon">👨‍💻</span>
+                    <h3>Background</h3>
                     <p>I'm Advait Darbare — a senior at Arizona State University majoring in Computer Science. I'm passionate about building intelligent, autonomous systems that merge AI reasoning with real-world impact.</p>
                 </div>
                 <div class="about-card">
-                    <div class="card-icon">🎯</div>
-                    <h3>My Focus</h3>
+                    <span class="card-icon">🎯</span>
+                    <h3>Focus</h3>
                     <p>Exploring the intersection of agentic AI, multi-agent orchestration, and scalable backend systems. I love designing systems that can reason, adapt, and automate complex workflows.</p>
                 </div>
                 <div class="about-card">
-                    <div class="card-icon">🚀</div>
-                    <h3>My Journey</h3>
+                    <span class="card-icon">🚀</span>
+                    <h3>Journey</h3>
                     <p>From developing ML components at Prophecy to researching data observability at Acceldata, I've grown from technical marketing into full-stack AI system design — combining creativity, engineering, and AI orchestration.</p>
                 </div>
             </div>
@@ -116,10 +119,7 @@
             <h2 class="section-title">Skills</h2>
             <div class="skills-marquee">
                 <div class="skills-track">
-                    <!-- Certifications -->
                     <div class="skill-item skill-text-only" title="AWS Certified Cloud Practitioner">AWS CCP</div>
-                    
-                    <!-- Programming Languages -->
                     <div class="skill-item" title="Java"><i class="devicon-java-plain"></i></div>
                     <div class="skill-item" title="C"><i class="devicon-c-plain"></i></div>
                     <div class="skill-item" title="C++"><i class="devicon-cplusplus-plain"></i></div>
@@ -129,58 +129,63 @@
                     <div class="skill-item" title="HTML"><i class="devicon-html5-plain"></i></div>
                     <div class="skill-item" title="CSS"><i class="devicon-css3-plain"></i></div>
                     <div class="skill-item" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
-                    
-                    <!-- Frameworks & Dev Tools -->
                     <div class="skill-item" title="Spring Boot"><i class="devicon-spring-plain"></i></div>
-                    <div class="skill-item" title="Spring AI"><i class="devicon-spring-plain"></i></div>
                     <div class="skill-item" title="Node.js"><i class="devicon-nodejs-plain"></i></div>
-                    <div class="skill-item" title="Express"><i class="devicon-express-original"></i></div>
                     <div class="skill-item" title="React.js"><i class="devicon-react-original"></i></div>
                     <div class="skill-item skill-text-only" title="Next.js">Next.js</div>
                     <div class="skill-item skill-text-only" title="FastAPI">FastAPI</div>
-                    <div class="skill-item skill-text-only" title="MVC">MVC</div>
-                    <div class="skill-item skill-text-only" title="Microservices">Microservices</div>
-                    
-                    <!-- Data Engineering & ML/AI -->
                     <div class="skill-item skill-text-only" title="LangGraph">LangGraph</div>
                     <div class="skill-item skill-text-only" title="LangChain">LangChain</div>
-                    <div class="skill-item skill-text-only" title="LangSmith">LangSmith</div>
                     <div class="skill-item skill-text-only" title="OpenAI">OpenAI</div>
-                    <div class="skill-item skill-text-only" title="Ollama">Ollama</div>
                     <div class="skill-item skill-text-only" title="Airflow">Airflow</div>
                     <div class="skill-item skill-text-only" title="PySpark">PySpark</div>
                     <div class="skill-item skill-text-only" title="Pandas">Pandas</div>
-                    <div class="skill-item skill-text-only" title="NumPy">NumPy</div>
                     <div class="skill-item skill-text-only" title="Scikit-learn">Scikit-learn</div>
                     <div class="skill-item" title="PyTorch"><i class="devicon-pytorch-original"></i></div>
                     <div class="skill-item" title="TensorFlow"><i class="devicon-tensorflow-original"></i></div>
                     <div class="skill-item skill-text-only" title="MLflow">MLflow</div>
-                    <div class="skill-item skill-text-only" title="FAISS">FAISS</div>
-                    <div class="skill-item skill-text-only" title="nomic-embed-text">nomic</div>
-                    <div class="skill-item skill-text-only" title="Matplotlib">Matplotlib</div>
-                    <div class="skill-item skill-text-only" title="Seaborn">Seaborn</div>
-                    <div class="skill-item skill-text-only" title="Gradio">Gradio</div>
-                    <div class="skill-item skill-text-only" title="Streamlit">Streamlit</div>
-                    <div class="skill-item skill-text-only" title="Kaggle">Kaggle</div>
-                    
-                    <!-- Cloud, Databases & Tools -->
                     <div class="skill-item" title="AWS"><i class="devicon-amazonwebservices-original"></i></div>
                     <div class="skill-item" title="PostgreSQL"><i class="devicon-postgresql-plain"></i></div>
-                    <div class="skill-item" title="pgvector"><i class="devicon-postgresql-plain"></i></div>
                     <div class="skill-item" title="MySQL"><i class="devicon-mysql-plain"></i></div>
                     <div class="skill-item" title="MongoDB"><i class="devicon-mongodb-plain"></i></div>
                     <div class="skill-item skill-text-only" title="ChromaDB">ChromaDB</div>
-                    <div class="skill-item" title="Firebase"><i class="devicon-firebase-plain"></i></div>
                     <div class="skill-item" title="Docker"><i class="devicon-docker-plain"></i></div>
                     <div class="skill-item" title="Git"><i class="devicon-git-plain"></i></div>
                     <div class="skill-item skill-text-only" title="CI/CD">CI/CD</div>
-                    <div class="skill-item skill-text-only" title="JUnit">JUnit</div>
-                    <div class="skill-item skill-text-only" title="Agile">Agile</div>
-                    <div class="skill-item skill-text-only" title="Lucidchart">Lucidchart</div>
-                    <div class="skill-item" title="PowerPoint"><i class="devicon-microsoft-plain"></i></div>
-                    <div class="skill-item" title="Excel"><i class="devicon-microsoft-plain"></i></div>
-                    <div class="skill-item" title="Word"><i class="devicon-microsoft-plain"></i></div>
-                    <div class="skill-item" title="Teams"><i class="devicon-microsoft-plain"></i></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="skill-item skill-text-only" title="AWS Certified Cloud Practitioner">AWS CCP</div>
+                    <div class="skill-item" title="Java"><i class="devicon-java-plain"></i></div>
+                    <div class="skill-item" title="C"><i class="devicon-c-plain"></i></div>
+                    <div class="skill-item" title="C++"><i class="devicon-cplusplus-plain"></i></div>
+                    <div class="skill-item" title="Python"><i class="devicon-python-plain"></i></div>
+                    <div class="skill-item" title="SQL"><i class="devicon-postgresql-plain"></i></div>
+                    <div class="skill-item" title="R"><i class="devicon-r-plain"></i></div>
+                    <div class="skill-item" title="HTML"><i class="devicon-html5-plain"></i></div>
+                    <div class="skill-item" title="CSS"><i class="devicon-css3-plain"></i></div>
+                    <div class="skill-item" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
+                    <div class="skill-item" title="Spring Boot"><i class="devicon-spring-plain"></i></div>
+                    <div class="skill-item" title="Node.js"><i class="devicon-nodejs-plain"></i></div>
+                    <div class="skill-item" title="React.js"><i class="devicon-react-original"></i></div>
+                    <div class="skill-item skill-text-only" title="Next.js">Next.js</div>
+                    <div class="skill-item skill-text-only" title="FastAPI">FastAPI</div>
+                    <div class="skill-item skill-text-only" title="LangGraph">LangGraph</div>
+                    <div class="skill-item skill-text-only" title="LangChain">LangChain</div>
+                    <div class="skill-item skill-text-only" title="OpenAI">OpenAI</div>
+                    <div class="skill-item skill-text-only" title="Airflow">Airflow</div>
+                    <div class="skill-item skill-text-only" title="PySpark">PySpark</div>
+                    <div class="skill-item skill-text-only" title="Pandas">Pandas</div>
+                    <div class="skill-item skill-text-only" title="Scikit-learn">Scikit-learn</div>
+                    <div class="skill-item" title="PyTorch"><i class="devicon-pytorch-original"></i></div>
+                    <div class="skill-item" title="TensorFlow"><i class="devicon-tensorflow-original"></i></div>
+                    <div class="skill-item skill-text-only" title="MLflow">MLflow</div>
+                    <div class="skill-item" title="AWS"><i class="devicon-amazonwebservices-original"></i></div>
+                    <div class="skill-item" title="PostgreSQL"><i class="devicon-postgresql-plain"></i></div>
+                    <div class="skill-item" title="MySQL"><i class="devicon-mysql-plain"></i></div>
+                    <div class="skill-item" title="MongoDB"><i class="devicon-mongodb-plain"></i></div>
+                    <div class="skill-item skill-text-only" title="ChromaDB">ChromaDB</div>
+                    <div class="skill-item" title="Docker"><i class="devicon-docker-plain"></i></div>
+                    <div class="skill-item" title="Git"><i class="devicon-git-plain"></i></div>
+                    <div class="skill-item skill-text-only" title="CI/CD">CI/CD</div>
                 </div>
             </div>
         </div>
@@ -189,41 +194,42 @@
     <!-- Experience Section -->
     <section class="section experience" id="experience">
         <div class="container">
-            <h2 class="section-title">Experience</h2>
-        </div>
-        <div class="experience-layout">
-            <!-- Left Block - Acceldata -->
-            <div class="exp-block exp-block-left">
-                <div class="exp-header">
-                    <div class="exp-date">July – Aug 2024</div>
-                    <h3 class="exp-title">Technical Marketing Intern</h3>
-                    <h4 class="exp-company">
-                        <a href="https://www.acceldata.io/" target="_blank" rel="noopener noreferrer" class="company-link">Acceldata</a>
-                        <span class="exp-location">Campbell, CA</span>
-                    </h4>
+            <span class="section-label">Experience</span>
+            <h2 class="section-title">Where I've worked</h2>
+            <div class="experience-layout">
+                <!-- Acceldata -->
+                <div class="exp-block exp-block-left">
+                    <div class="exp-header">
+                        <span class="exp-date">July – Aug 2024</span>
+                        <h3 class="exp-title">Technical Marketing Intern</h3>
+                        <h4 class="exp-company">
+                            <a href="https://www.acceldata.io/" target="_blank" rel="noopener noreferrer" class="company-link">Acceldata</a>
+                            <span class="exp-location">· Campbell, CA</span>
+                        </h4>
+                    </div>
+                    <div class="exp-content">
+                        <p>Performed in-depth analysis of research papers on data quality and machine learning model performance, deriving critical insights to support strategic planning.</p>
+                        <p>Created internal documentation (reports, presentations, flowcharts, wireframes) supporting marketing efforts for Acceldata's data observability platform.</p>
+                        <p>Compiled and analyzed data quality metrics to demonstrate the value proposition of data observability in enhancing ML model efficacy.</p>
+                    </div>
                 </div>
-                <div class="exp-content">
-                    <p>Performed in-depth analysis of research papers on data quality and machine learning model performance, deriving critical insights to support strategic planning.</p>
-                    <p>Created internal documentation (reports, presentations, flowcharts, wireframes) supporting marketing efforts for Acceldata's data observability platform.</p>
-                    <p>Compiled and analyzed data quality metrics to demonstrate the value proposition of data observability in enhancing ML model efficacy.</p>
-                </div>
-            </div>
 
-            <!-- Right Block - Prophecy -->
-            <div class="exp-block exp-block-right">
-                <div class="exp-header">
-                    <div class="exp-date">June – Aug 2023</div>
-                    <h3 class="exp-title">Software Developer Intern</h3>
-                    <h4 class="exp-company">
-                        <a href="https://www.prophecy.ai/" target="_blank" rel="noopener noreferrer" class="company-link">Prophecy</a>
-                        <span class="exp-location">Palo Alto, CA</span>
-                    </h4>
-                </div>
-                <div class="exp-content">
-                    <p>Engineered a PySpark ML pipeline for linear regression in an end-to-end ETL workflow, integrating vector assembly, train-test splitting, model fitting, and performance evaluation.</p>
-                    <p>Developed a Word2Vec component using PySpark for the Prophecy Platform, enhancing NLP capabilities with tokenization and embeddings.</p>
-                    <p>Built a data ingestion component for sourcing datasets from Hugging Face, streamlining ETL processes for ML pipelines.</p>
-                    <p>Designed and executed 22 TPC-H benchmark ETL pipelines, showcasing efficient data extraction, transformation, and loading at scale.</p>
+                <!-- Prophecy -->
+                <div class="exp-block exp-block-right">
+                    <div class="exp-header">
+                        <span class="exp-date">June – Aug 2023</span>
+                        <h3 class="exp-title">Software Developer Intern</h3>
+                        <h4 class="exp-company">
+                            <a href="https://www.prophecy.ai/" target="_blank" rel="noopener noreferrer" class="company-link">Prophecy</a>
+                            <span class="exp-location">· Palo Alto, CA</span>
+                        </h4>
+                    </div>
+                    <div class="exp-content">
+                        <p>Engineered a PySpark ML pipeline for linear regression in an end-to-end ETL workflow, integrating vector assembly, train-test splitting, model fitting, and performance evaluation.</p>
+                        <p>Developed a Word2Vec component using PySpark for the Prophecy Platform, enhancing NLP capabilities with tokenization and embeddings.</p>
+                        <p>Built a data ingestion component for sourcing datasets from Hugging Face, streamlining ETL processes for ML pipelines.</p>
+                        <p>Designed and executed 22 TPC-H benchmark ETL pipelines, showcasing efficient data extraction, transformation, and loading at scale.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -232,7 +238,10 @@
     <!-- Projects Section -->
     <section class="section projects" id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <div class="projects-header">
+                <span class="section-label">Projects</span>
+                <h2 class="section-title">Things I've built</h2>
+            </div>
             <div class="projects-grid">
                 <div class="project-card" data-project="mcp-stock">
                     <div class="project-header">
@@ -245,7 +254,7 @@
                     </div>
                     <h3>AI Stock Assistant</h3>
                     <p>Production-grade research platform with a LangGraph multi-agent supervisor, 10 institutional-style reports (Goldman, Morgan, Bridgewater, etc.), real-time Schwab/Alpaca data, and HITL portfolio trading.</p>
-                    <button class="learn-more-btn" data-project="mcp-stock">Learn More</button>
+                    <button class="view-details-btn" data-project="mcp-stock">View details</button>
                 </div>
                 <div class="project-card" data-project="ai-agents-dre">
                     <div class="project-header">
@@ -256,48 +265,9 @@
                             </a>
                         </div>
                     </div>
-                    <h3>Agentic Data Reliability Engineering (DRE)</h3>
+                    <h3>Agentic Data Reliability Engineering</h3>
                     <p>Contract-first validation, anomaly detection, SLO enforcement, and HITL remediation. LangGraph pipelines, Next.js 15 dashboard, and MCP integration for AI-assisted data workflows.</p>
-                    <button class="learn-more-btn" data-project="ai-agents-dre">Learn More</button>
-                </div>
-                <div class="project-card" data-project="standup-assistant">
-                    <div class="project-header">
-                        <div class="project-icon">💬</div>
-                        <div class="project-links">
-                            <a href="https://github.com/AdvaitDarbare/standup-assistant" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
-                                <i class="devicon-github-original"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>AI-Powered Standup Assistant</h3>
-                    <p>Automated tool that collects daily check-ins, summarizes them via GPT-4, supports semantic search, and posts updates to Slack for efficient team coordination.</p>
-                    <button class="learn-more-btn" data-project="standup-assistant">Learn More</button>
-                </div>
-                <div class="project-card" data-project="job-portal">
-                    <div class="project-header">
-                        <div class="project-icon">💼</div>
-                        <div class="project-links">
-                            <a href="https://github.com/AdvaitDarbare/job-portal-web-application" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
-                                <i class="devicon-github-original"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>Job Web Portal Application</h3>
-                    <p>Full-stack job portal enabling user registration, job listings, and admin access with secure role-based authentication and comprehensive search functionality.</p>
-                    <button class="learn-more-btn" data-project="job-portal">Learn More</button>
-                </div>
-                <div class="project-card" data-project="wikiwatch">
-                    <div class="project-header">
-                        <div class="project-icon">📊</div>
-                        <div class="project-links">
-                            <a href="https://github.com/AdvaitDarbare/WikiWatch" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
-                                <i class="devicon-github-original"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>WikiWatch</h3>
-                    <p>Live streaming pipeline that flags anomalous Wikipedia edit patterns via a real-time dashboard using Kafka, Flink, and ML scoring.</p>
-                    <button class="learn-more-btn" data-project="wikiwatch">Learn More</button>
+                    <button class="view-details-btn" data-project="ai-agents-dre">View details</button>
                 </div>
                 <div class="project-card" data-project="tariffpulse">
                     <div class="project-header">
@@ -310,114 +280,152 @@
                     </div>
                     <h3>TariffPulse</h3>
                     <p>A multi-agent platform that quantifies semiconductor supply chain risk and tariff exposure using knowledge graphs and agentic RAG.</p>
-                    <button class="learn-more-btn" data-project="tariffpulse">Learn More</button>
+                    <button class="view-details-btn" data-project="tariffpulse">View details</button>
+                </div>
+                <div class="project-card" data-project="wikiwatch">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <div class="project-links">
+                            <a href="https://github.com/AdvaitDarbare/WikiWatch" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>WikiWatch</h3>
+                    <p>Live streaming pipeline that flags anomalous Wikipedia edit patterns via a real-time dashboard using Kafka, Flink, and ML scoring.</p>
+                    <button class="view-details-btn" data-project="wikiwatch">View details</button>
+                </div>
+                <div class="project-card" data-project="standup-assistant">
+                    <div class="project-header">
+                        <div class="project-icon">💬</div>
+                        <div class="project-links">
+                            <a href="https://github.com/AdvaitDarbare/standup-assistant" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>AI-Powered Standup Assistant</h3>
+                    <p>Automated tool that collects daily check-ins, summarizes them via GPT-4, supports semantic search, and posts updates to Slack for efficient team coordination.</p>
+                    <button class="view-details-btn" data-project="standup-assistant">View details</button>
+                </div>
+                <div class="project-card" data-project="job-portal">
+                    <div class="project-header">
+                        <div class="project-icon">💼</div>
+                        <div class="project-links">
+                            <a href="https://github.com/AdvaitDarbare/job-portal-web-application" target="_blank" rel="noopener noreferrer" class="project-link" title="View on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Job Web Portal Application</h3>
+                    <p>Full-stack job portal enabling user registration, job listings, and admin access with secure role-based authentication and comprehensive search functionality.</p>
+                    <button class="view-details-btn" data-project="job-portal">View details</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Project Modal -->
-    <div class="project-modal" id="projectModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">&times;</button>
-            <div class="modal-body">
-                <div class="modal-header">
-                    <div class="modal-icon" id="modalIcon">📈</div>
-                    <h2 id="modalTitle">Project Title</h2>
-                    <p id="modalSubtitle" class="modal-subtitle"></p>
+    <!-- Project Panel (right slide-in) -->
+    <div class="project-panel" id="projectPanel" aria-hidden="true">
+        <div class="panel-overlay" id="panelOverlay"></div>
+        <aside class="panel-content" role="complementary" aria-label="Project details">
+            <div class="panel-top-bar">
+                <span class="panel-label">Project details</span>
+                <button class="panel-close" id="panelClose" aria-label="Close panel">✕</button>
+            </div>
+            <div class="panel-body">
+                <div class="panel-hero">
+                    <div class="panel-icon" id="panelIcon"></div>
+                    <div class="panel-title-group">
+                        <h2 id="panelTitle"></h2>
+                        <p class="panel-subtitle" id="panelSubtitle"></p>
+                    </div>
                 </div>
-                <div class="modal-details">
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p id="modalOverview"></p>
-                    </div>
-                    <div class="modal-section">
-                        <h3>Key Features</h3>
-                        <ul id="modalFeatures" class="feature-list"></ul>
-                    </div>
-                    <div class="modal-section">
-                        <h3>Technical Architecture</h3>
-                        <p id="modalArchitecture"></p>
-                    </div>
-                    <div class="modal-section">
-                        <h3>Tech Stack</h3>
-                        <div id="modalTechStack" class="tech-stack-grid"></div>
-                    </div>
-                    <div class="modal-actions">
-                        <a id="modalGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="modal-btn modal-btn-primary">
-                            <i class="devicon-github-original"></i>
-                            View on GitHub
-                        </a>
-                    </div>
+
+                <div class="panel-section">
+                    <span class="panel-section-label">Overview</span>
+                    <p id="panelOverview"></p>
+                </div>
+
+                <div class="panel-section">
+                    <span class="panel-section-label">Key Features</span>
+                    <ul class="panel-feature-list" id="panelFeatures"></ul>
+                </div>
+
+                <div class="panel-section">
+                    <span class="panel-section-label">Technical Architecture</span>
+                    <p id="panelArchitecture"></p>
+                </div>
+
+                <div class="panel-section">
+                    <span class="panel-section-label">Tech Stack</span>
+                    <div class="panel-tech-stack" id="panelTechStack"></div>
+                </div>
+
+                <div class="panel-actions">
+                    <a id="panelGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="panel-github-btn">
+                        <i class="devicon-github-original"></i>
+                        View on GitHub
+                    </a>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
 
-    <!-- Blog Section -->
+    <!-- Blog / Insights Section -->
     <section class="section blog" id="blog">
         <div class="container">
-            <h2 class="section-title">Insights & Research</h2>
-            <div class="blog-grid">
+            <span class="section-label">Insights</span>
+            <h2 class="section-title">Writing</h2>
+            <div class="blog-list">
                 <a href="https://medium.com/@advait.darbare9/from-prompt-engineering-to-context-engineering-509684cda475" target="_blank" rel="noopener noreferrer" class="blog-card-link">
                     <article class="blog-card">
-                        <div class="blog-image">
-                            <div class="blog-placeholder">Medium</div>
-                        </div>
-                        <div class="blog-content">
+                        <span class="blog-index">01</span>
+                        <div class="blog-text">
                             <h3>From Prompt Engineering to Context Engineering</h3>
                             <p class="blog-subtitle">Why Managing Context Is the Key to Smarter AI</p>
-                            <span class="blog-link">Read Article →</span>
                         </div>
+                        <span class="blog-arrow">↗</span>
                     </article>
                 </a>
                 <a href="https://medium.com/@advait.darbare9/agentic-design-patterns-a-practical-guide-for-ai-engineers-c3af0fe0d39d" target="_blank" rel="noopener noreferrer" class="blog-card-link">
                     <article class="blog-card">
-                        <div class="blog-image">
-                            <div class="blog-placeholder">Medium</div>
-                        </div>
-                        <div class="blog-content">
+                        <span class="blog-index">02</span>
+                        <div class="blog-text">
                             <h3>Agentic Design Patterns: A Practical Guide for AI Engineers</h3>
                             <p class="blog-subtitle">Exploring the key design patterns behind agentic AI systems</p>
-                            <span class="blog-link">Read Article →</span>
                         </div>
+                        <span class="blog-arrow">↗</span>
                     </article>
                 </a>
                 <a href="https://medium.com/@advait.darbare9/the-shift-from-traditional-rag-to-agentic-rag-54c6a4ae82f8" target="_blank" rel="noopener noreferrer" class="blog-card-link">
                     <article class="blog-card">
-                        <div class="blog-image">
-                            <div class="blog-placeholder">Medium</div>
-                        </div>
-                        <div class="blog-content">
+                        <span class="blog-index">03</span>
+                        <div class="blog-text">
                             <h3>The Shift from Traditional RAG to Agentic RAG</h3>
                             <p class="blog-subtitle">From RAG to Agentic RAG — where retrieval meets reasoning</p>
-                            <span class="blog-link">Read Article →</span>
                         </div>
+                        <span class="blog-arrow">↗</span>
                     </article>
                 </a>
                 <a href="https://medium.com/@advait.darbare9/openai-function-calling-vs-langchain-tools-vs-mcp-whats-the-difference-d1689688d965" target="_blank" rel="noopener noreferrer" class="blog-card-link">
                     <article class="blog-card">
-                        <div class="blog-image">
-                            <div class="blog-placeholder">Medium</div>
-                        </div>
-                        <div class="blog-content">
-                            <h3>OpenAI Function Calling vs LangChain Tools vs MCP: What's the Difference?</h3>
+                        <span class="blog-index">04</span>
+                        <div class="blog-text">
+                            <h3>OpenAI Function Calling vs LangChain Tools vs MCP</h3>
                             <p class="blog-subtitle">A comprehensive comparison of AI tool integration approaches</p>
-                            <span class="blog-link">Read Article →</span>
                         </div>
+                        <span class="blog-arrow">↗</span>
                     </article>
                 </a>
                 <a href="https://medium.com/@advait.darbare9/why-llms-are-not-fully-trustworthy-hallucinations-reasoning-and-evaluation-challenges-1abe5fc6744b" target="_blank" rel="noopener noreferrer" class="blog-card-link">
                     <article class="blog-card">
-                        <div class="blog-image">
-                            <div class="blog-placeholder">Medium</div>
+                        <span class="blog-index">05</span>
+                        <div class="blog-text">
+                            <h3>Why LLMs Are Not Fully Trustworthy</h3>
+                            <p class="blog-subtitle">Hallucinations, Reasoning, and Evaluation Challenges</p>
                         </div>
-                        <div class="blog-content">
-                            <h3>Why LLMs Are Not Fully Trustworthy: Hallucinations, Reasoning, and Evaluation Challenges</h3>
-                            <p class="blog-subtitle">Understanding the limitations and challenges of large language models</p>
-                            <span class="blog-link">Read Article →</span>
-                        </div>
+                        <span class="blog-arrow">↗</span>
                     </article>
                 </a>
             </div>
@@ -427,23 +435,33 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <span class="section-label">Contact</span>
+            <h2 class="section-title">Get in touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
+                    <h3>Let's connect</h3>
                     <p>I'm always open to discussing new opportunities, innovative projects, or just having a conversation about technology.</p>
                     <div class="contact-links">
                         <a href="mailto:advait.darbare9@gmail.com" class="contact-link">
-                            <span class="link-icon">✉️</span>
-                            <span>Email</span>
+                            <span class="contact-link-left">
+                                <span class="link-icon">✉️</span>
+                                <span>advait.darbare9@gmail.com</span>
+                            </span>
+                            <span class="contact-link-arrow">↗</span>
                         </a>
                         <a href="https://www.linkedin.com/in/advait-darbare/" target="_blank" rel="noopener noreferrer" class="contact-link">
-                            <span class="link-icon">💼</span>
-                            <span>LinkedIn</span>
+                            <span class="contact-link-left">
+                                <span class="link-icon">💼</span>
+                                <span>LinkedIn</span>
+                            </span>
+                            <span class="contact-link-arrow">↗</span>
                         </a>
                         <a href="https://github.com/AdvaitDarbare" target="_blank" rel="noopener noreferrer" class="contact-link">
-                            <span class="link-icon">💻</span>
-                            <span>GitHub</span>
+                            <span class="contact-link-left">
+                                <span class="link-icon">💻</span>
+                                <span>GitHub</span>
+                            </span>
+                            <span class="contact-link-arrow">↗</span>
                         </a>
                     </div>
                 </div>
@@ -454,11 +472,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Advait Darbare. All rights reserved.</p>
+            <p>&copy; 2026 Advait Darbare. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js?v=20260223"></script>
+    <script src="script.js?v=20260223-v2"></script>
 </body>
 </html>
-
