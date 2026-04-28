@@ -52,6 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactLinks) staggerObserver.observe(contactLinks);
 
     // ==========================================
+    // NAV SCROLL SPY
+    // ==========================================
+    const navLinks = document.querySelectorAll('.nav-link');
+    const scrollSections = document.querySelectorAll('section[id]');
+
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+                });
+            }
+        });
+    }, { threshold: 0.35, rootMargin: '-60px 0px -35% 0px' });
+
+    scrollSections.forEach(section => spyObserver.observe(section));
+
+    // ==========================================
     // MOBILE MENU
     // ==========================================
     const mobileToggle = document.querySelector('.mobile-menu-toggle');

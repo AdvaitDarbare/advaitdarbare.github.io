@@ -139,6 +139,11 @@ a {
     background: var(--accent);
 }
 
+.nav-link.active {
+    color: var(--foreground);
+    font-weight: 500;
+}
+
 .nav-cta {
     background: var(--foreground);
     color: var(--primary-foreground);
@@ -597,7 +602,7 @@ body.menu-open {
     display: grid;
     grid-template-columns: 160px 1fr;
     gap: 1.25rem;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--border);
     transition: background 0.15s ease;
@@ -619,6 +624,7 @@ body.menu-open {
     letter-spacing: 0.06em;
     flex-shrink: 0;
     line-height: 1.4;
+    padding-top: 0.2rem;
 }
 
 .skill-pills {
@@ -1268,6 +1274,16 @@ body.menu-open {
 
 /* Legacy blog-image elements not used in new list layout */
 .blog-image, .blog-placeholder, .blog-link, .blog-content { display: none; }
+
+.blog-view-all-label {
+    color: var(--muted-foreground);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.blog-view-all-row:hover .blog-view-all-label {
+    color: var(--foreground);
+}
 
 /* ============================================
    CONTACT SECTION
