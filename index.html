@@ -800,7 +800,7 @@ section.chapter:first-of-type{ border-top: 0; }
         <span class="work-num">02.</span>
         <div class="work-main">
           <h3 class="serif">Real-Time Shoe Personalization <span class="read-arrow">↗</span></h3>
-          <p>An end-to-end streaming pipeline built to learn how Kafka, Flink, and CrewAI fit together. Python producers simulate a shoe store — clicks, cart actions, inventory updates — Flink SQL turns those events into live user and product profiles, and a CrewAI agent reads that context to produce a recommendation in real time.</p>
+          <p>Personalization systems usually rely on batch-updated features — so a recommendation reflects what a user did yesterday, not what they're doing right now. This project explores that gap: four Kafka producers simulate a live shoe store, Flink continuously turns those events into user and product profiles, and CrewAI agents use that live context — via MCP and ChromaDB — to produce recommendations in real time.</p>
         </div>
         <div class="work-tags">
           <span class="stack">Kafka · Flink · CrewAI · ChromaDB · Docker</span>
@@ -1065,17 +1065,18 @@ const PROJECTS = {
   },
   'shoe-personalization': {
     title: 'Real-Time Shoe Personalization',
-    sub: 'An end-to-end streaming pipeline for learning how Kafka, Flink, and CrewAI fit together.',
-    overview: 'This project simulates a shoe store to show how a real-time AI context layer can work in practice. Python producers send live clickstream, cart, inventory, and product metadata events into Kafka. Flink SQL jobs continuously transform those raw events into live user and product profiles — tracking things like recent searches, cart activity, price sensitivity, and stock levels. A CrewAI agent reads that context, searches a local ChromaDB product index, applies price guardrails, and writes a recommendation back to Kafka. Intentionally kept small — the goal is to make the pattern approachable, not to build a production platform.',
+    sub: 'How raw events become live context an AI agent can actually use — built around a simulated shoe store.',
+    overview: 'Personalization systems often rely on batch-updated features, so a recommendation reflects what a user did yesterday rather than what they are doing right now. This project explores that gap. Inspired by the context engineering architecture from Confluent\'s guide by Sean Falconer, it builds a small but complete version scoped to a shoe store. Four producers stream clicks, cart events, inventory updates, and product metadata into Kafka. Flink continuously transforms those events into live user and product profiles. ChromaDB indexes product metadata for semantic search. An MCP server exposes all of that context as tools. CrewAI agents — a personalization agent and a merchandising agent — consume those tools to produce recommendations, which are written back into Kafka. Redpanda Console and Grafana let you observe the pipeline as it runs.',
     features: [
-      'Python producers simulate clicks, cart actions, inventory, and product metadata as live Kafka events.',
-      'Flink SQL builds live user profiles (searches, cart adds, price sensitivity) and product profiles (stock, demand, rating) continuously.',
-      'CrewAI agent reads live Kafka profiles, searches ChromaDB semantically, and produces one recommendation per user.',
-      'MCP server optionally exposes the same live context so another agent or desktop client can query it without knowing Kafka topic names.',
-      'Grafana dashboard shows live profile and recommendation counts as the pipeline runs.',
-      'Entire stack runs with one Docker Compose command.'
+      'Four Kafka producers simulate a live shoe store: clickstream (searches, views, add-to-cart), cart events (purchases, returns), inventory (stock, pricing, sale status), and product metadata (descriptions, attributes, ratings).',
+      'Flink reads raw Kafka topics and continuously builds two live profiles: live-user-profile (recent searches, cart adds, price sensitivity, active categories) and live-product-profile (stock, demand score, sale status, rating).',
+      'ChromaDB indexes product metadata as it arrives so agents can search by meaning — finding a "cheaper running shoe" rather than filtering exact fields.',
+      'MCP server wraps all context retrieval behind tools: get live user profile, get product catalog, search similar products, filter by price sensitivity.',
+      'Personalization agent uses MCP tools to read the user\'s live profile, search ChromaDB, and write a single product recommendation back to the recommendations Kafka topic.',
+      'Merchandising agent reads live product signals — stock trend, demand score, sale status, rating — and identifies which products should be promoted and through which channel.',
+      'Redpanda Console for inspecting raw Kafka messages; Grafana for pipeline-health metrics (live user count, low-stock products, recommendation counts).'
     ],
-    arch: 'Python producers write to Kafka topics (shoe-clickstream, cart-updates, inventory, product-metadata). Flink SQL jobs read those topics and write compact context back to live-user-profile and live-product-profile Kafka topics. ChromaDB builds a semantic product index from product-metadata. The CrewAI agent in agents/main.py watches live-user-profile, pulls context using Kafka and vector-search tools, applies price sensitivity filtering in code, and writes the recommendation to a recommendations topic. An optional MCP server (agents/mcp_server.py) wraps the same context tools for external clients.',
+    arch: 'Four Python producers write to Kafka topics: shoe-clickstream, cart-updates, inventory, and product-metadata. Two Flink SQL jobs read those raw topics and write continuously updated context into live-user-profile and live-product-profile Kafka topics. A separate consumer builds a ChromaDB vector index from product-metadata events. An MCP server exposes four tools backed by Kafka consumer reads and ChromaDB queries. The CrewAI personalization agent calls those MCP tools, applies price-sensitivity filtering in code (not in the prompt), and writes a JSON recommendation event to the recommendations topic. A second merchandising agent reads the same live product profiles and outputs a promotion list. Prometheus scrapes pipeline metrics; Grafana visualises them. The full stack runs with one Docker Compose command.',
     stack: ['Python','Apache Kafka','Apache Flink','Flink SQL','CrewAI','ChromaDB','OpenAI GPT-4o-mini','Docker Compose','Prometheus','Grafana','MCP'],
     git: 'https://github.com/AdvaitDarbare/realtime-personalization-engine'
   },
