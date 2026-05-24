@@ -136,8 +136,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
-  width: calc(100% - 40px);
-  max-width: 760px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
   background: #ffffff;
   border: 1.5px solid #c8c8c8;
   border-radius: 14px;
@@ -148,7 +148,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   justify-content: center;
   height: 48px;
-  padding: 0 16px;
+  padding: 0 12px;
 }
 .masthead-logo { display: none; }
 .masthead nav { display: flex; gap: 2px; align-items: center; }
@@ -163,8 +163,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav-link:hover { color: var(--text); background: var(--bg-hover); }
 .menu-btn { display: none; color: var(--text-2); font-size: 0.8rem; padding: 5px 18px; border-radius: 8px; border: 1px solid var(--border); }
 
-@media (max-width: 680px) {
-  .masthead { top: 12px; width: calc(100% - 24px); }
+@media (max-width: 500px) {
+  .masthead { top: 12px; }
   .masthead nav { display: none; }
   .menu-btn { display: inline-flex; }
 }
@@ -257,13 +257,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-title {
   font-family: var(--sans);
   font-size: clamp(2.4rem, 8vw, 5rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.0;
   letter-spacing: -0.04em;
   color: var(--text);
   margin-bottom: 14px;
 }
-.hero-title em { font-style: normal; font-weight: 300; color: var(--text); }
+.hero-title em { font-style: normal; font-weight: 500; color: var(--text); }
 
 .hero-sub {
   font-family: var(--sans);
