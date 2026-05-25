@@ -660,6 +660,7 @@ section.chapter {
       <a class="nav-link" href="#note">Bio</a>
       <a class="nav-link" href="#experience">Work</a>
       <a class="nav-link" href="#work">Projects</a>
+      <a class="nav-link" href="#research">Research</a>
       <a class="nav-link" href="#writing">Writing</a>
       <a class="nav-link" href="#correspondence">Contact</a>
     </nav>
@@ -677,6 +678,7 @@ section.chapter {
   <a href="#currently" data-close>Currently</a>
   <a href="#experience" data-close>Work</a>
   <a href="#work" data-close>Projects</a>
+  <a href="#research" data-close>Research</a>
   <a href="#writing" data-close>Writing</a>
   <a href="#correspondence" data-close>Contact</a>
 </aside>
@@ -852,6 +854,29 @@ section.chapter {
           <span class="stack">Spring Boot 3 · MySQL · AWS · REST</span>
         </div>
       </article>
+
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="chapter wrap" id="research">
+    <div class="chapter-head">
+      <span class="mono">Research</span>
+      <h2 class="chapter-title serif">Academic work on <em>applied ML</em>.</h2>
+    </div>
+
+    <div class="work">
+      <article class="work-item" data-project="wildfire-unet">
+        <span class="work-num">01.</span>
+        <div class="work-main">
+          <h3>Next-Day Wildfire Spread Prediction <span class="work-arrow" style="display:inline;font-size:0.8em;">↗</span></h3>
+          <p>A U-Net model that predicts where a wildfire will be tomorrow. Unlike existing research that only uses weather and terrain, this paper integrates operational mitigation data — firebreaks, retardant drops — into the prediction. Trained on the BurnMD dataset across 308 fires (2018–2021), supplemented with satellite data from Google Earth Engine. Final model achieved F1 of 0.455.</p>
+          <p style="margin-top:8px;font-size:0.8rem;color:var(--text-3);">Arizona State University · 2025</p>
+        </div>
+        <div class="work-tags">
+          <span class="stack">U-Net · PyTorch · BurnMD · Google Earth Engine · GDAL · Rasterio</span>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -859,7 +884,7 @@ section.chapter {
   <section class="chapter wrap" id="writing">
     <div class="chapter-head">
       <span class="mono">Writing</span>
-      <h2 class="chapter-title serif">Eight articles on <em>agents</em> and what breaks around them.</h2>
+      <h2 class="chapter-title serif">Eight articles on the craft of <em>AI engineering</em>.</h2>
     </div>
 
     <div class="writing">
@@ -1019,7 +1044,10 @@ section.chapter {
       <div class="panel-stack" id="panelStack"></div>
     </div>
 
-    <a class="panel-cta" id="panelGit" href="#" target="_blank" rel="noopener">View on GitHub ↗</a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="panel-cta" id="panelGit" href="#" target="_blank" rel="noopener">View on GitHub ↗</a>
+      <a class="panel-cta" id="panelPaper" href="#" target="_blank" rel="noopener" style="display:none;background:var(--bg);color:var(--text);border:1px solid var(--border);">Read Paper ↗</a>
+    </div>
   </aside>
 </div>
 
@@ -1154,6 +1182,24 @@ const PROJECTS = {
     stack: ['Python','FastAPI','OpenAI GPT-4','Slack API','ChromaDB','Sentence Transformers','Streamlit','SSE','asyncio'],
     git: 'https://github.com/AdvaitDarbare/standup-assistant'
   },
+  'wildfire-unet': {
+    title: 'Next-Day Wildfire Spread Prediction',
+    sub: 'A U-Net research model that predicts where a wildfire will spread tomorrow — uniquely combining terrain, weather, and operational mitigation data.',
+    overview: 'Most wildfire spread models focus on environmental variables and ignore what firefighters actually do on the ground. This research fills that gap. Using the BurnMD dataset — 308 medium-sized fires from 2018 to 2021 with standardised operational records — and satellite data from Google Earth Engine, a patch-based U-Net was trained to predict next-day fire perimeters. Including firebreak and retardant data measurably improved predictions, validating the hypothesis that mitigation actions are a meaningful signal. Published as a research paper from Arizona State University.',
+    features: [
+      'Predicts next-day wildfire perimeter as a binary segmentation map.',
+      'First model in the study to incorporate operational mitigation data (firebreaks, retardant drops) alongside weather and terrain.',
+      'Dataset spans 308 fires across 4 years, sourced from BurnMD and Google Earth Engine (NOAA/MODIS).',
+      'Full preprocessing pipeline: rasterization, CRS reprojection, normalization, 256×256 chipping, and multiband GeoTIFF stacking.',
+      'Hyperparameter study across patch size, positive class weight, and loss function (Dice, Focal, Tversky).',
+      'Ablation showing mitigation-enriched dataset outperforms standard dataset at equivalent epochs.',
+      'Final model: 4-level U-Net, Dice + Focal loss, dynamic class-weight estimator, F1 = 0.455.'
+    ],
+    arch: 'Fire perimeters and mitigation zones from BurnMD are rasterized and reprojected to a common CRS using GDAL and Rasterio. Wind speed, wind direction, elevation, slope, aspect, and land cover from Google Earth Engine are aligned to the same grid and normalized to [0, 1]. All layers are stacked into multiband GeoTIFFs and chipped into 256×256 patches. A 4-level U-Net encoder-decoder is trained on 128×128 patches sampled randomly from those chips. A dynamic class-weight estimator compensates for the ~6% fire-pixel class imbalance. Dice + Focal loss drives shape-aware learning. The dataset is split 60/20/20 (train/val/test) with strict held-out evaluation.',
+    stack: ['Python','U-Net','PyTorch','BurnMD','Google Earth Engine','GDAL','Rasterio','GeoPandas','NumPy','Dice Loss','Focal Loss'],
+    git: 'https://github.com/AdvaitDarbare/finalproject475',
+    paper: 'https://docs.google.com/document/d/1Nn5YrEjXfXl1n9Qt1ozAZwzGzs-Grvxv/edit?usp=drive_link&ouid=107924198326050564228&rtpof=true&sd=true'
+  },
   'job-portal': {
     title: 'Job Web Portal',
     sub: 'A production-pattern jobs platform — separate flows for seekers, employers, and admins, all on AWS.',
@@ -1182,6 +1228,7 @@ const panelFeatures = document.getElementById('panelFeatures');
 const panelArch = document.getElementById('panelArch');
 const panelStack = document.getElementById('panelStack');
 const panelGit = document.getElementById('panelGit');
+const panelPaper = document.getElementById('panelPaper');
 
 function openPanel(id, idx){
   const p = PROJECTS[id]; if(!p) return;
@@ -1193,6 +1240,8 @@ function openPanel(id, idx){
   panelArch.textContent = p.arch;
   panelStack.innerHTML = p.stack.map(s => '<span>' + s + '</span>').join('');
   panelGit.href = p.git;
+  if (p.paper) { panelPaper.href = p.paper; panelPaper.style.display = 'inline-flex'; }
+  else { panelPaper.style.display = 'none'; }
   panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
   const body = panel.querySelector('.panel-body'); if(body) body.scrollTop = 0;
