@@ -34,6 +34,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js-anim');</script>
 
 <style>
 /* ==========================================================
@@ -636,10 +637,56 @@ section.chapter {
 }
 
 /* ==========================================================
-   ENTRANCE
+   ENTRANCE — Apple-like scroll reveals
    ========================================================== */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s cubic-bezier(.22,1,.36,1), transform 0.55s cubic-bezier(.22,1,.36,1); }
-.reveal.in { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: no-preference) {
+  html.js-anim {
+    scroll-behavior: smooth;
+  }
+
+  /* Whole sections ease in as they approach the viewport */
+  html.js-anim section.chapter.reveal-section:not(.in) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  html.js-anim section.chapter.reveal-section {
+    transition:
+      opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  html.js-anim section.chapter.reveal-section.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Nested content: rise + stagger via --reveal-delay */
+  html.js-anim .reveal:not(.in) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  html.js-anim .reveal {
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  html.js-anim .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  section.chapter.reveal-section,
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 
 /* ==========================================================
    PRINT
@@ -705,7 +752,7 @@ section.chapter {
   </section>
 
   <!-- BIO -->
-  <section class="chapter wrap" id="note">
+  <section class="chapter wrap reveal-section" id="note">
     <div class="chapter-head">
       <span class="mono">Bio</span>
       <h2 class="chapter-title serif">Building <em>agentic systems</em> and the infrastructure underneath.</h2>
@@ -716,7 +763,7 @@ section.chapter {
   </section>
 
   <!-- CURRENTLY -->
-  <section class="chapter wrap" id="currently">
+  <section class="chapter wrap reveal-section" id="currently">
     <div class="chapter-head">
       <span class="mono">Currently</span>
       <h2 class="chapter-title serif">What I&rsquo;m <em>up to</em>.</h2>
@@ -740,7 +787,7 @@ section.chapter {
   </section>
 
   <!-- WORK / EXPERIENCE -->
-  <section class="chapter wrap" id="experience">
+  <section class="chapter wrap reveal-section" id="experience">
     <div class="chapter-head">
       <span class="mono">Work</span>
       <h2 class="chapter-title serif">Two summers in industry. <em>Both shipped.</em></h2>
@@ -782,7 +829,7 @@ section.chapter {
   </section>
 
   <!-- PROJECTS -->
-  <section class="chapter wrap" id="work">
+  <section class="chapter wrap reveal-section" id="work">
     <div class="chapter-head">
       <span class="mono">Projects</span>
       <h2 class="chapter-title serif">Six end-to-end <em>projects</em>.</h2>
@@ -859,7 +906,7 @@ section.chapter {
   </section>
 
   <!-- RESEARCH -->
-  <section class="chapter wrap" id="research">
+  <section class="chapter wrap reveal-section" id="research">
     <div class="chapter-head">
       <span class="mono">Research</span>
       <h2 class="chapter-title serif">Academic work on <em>applied ML</em>.</h2>
@@ -881,7 +928,7 @@ section.chapter {
   </section>
 
   <!-- WRITING -->
-  <section class="chapter wrap" id="writing">
+  <section class="chapter wrap reveal-section" id="writing">
     <div class="chapter-head">
       <span class="mono">Writing</span>
       <h2 class="chapter-title serif">Eight articles on the craft of <em>AI engineering</em>.</h2>
@@ -961,7 +1008,7 @@ section.chapter {
   </section>
 
   <!-- CONTACT -->
-  <section class="chapter wrap" id="correspondence">
+  <section class="chapter wrap reveal-section" id="correspondence">
     <div class="chapter-head">
       <span class="mono">Contact</span>
       <h2 class="chapter-title serif">Let&rsquo;s <em>talk</em>.</h2>
@@ -1088,11 +1135,91 @@ menuBtn?.addEventListener('click', openMenu);
 menuClose?.addEventListener('click', closeMenu);
 menuSheet?.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMenu));
 
-/* Reveal on scroll */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.chapter-head, .work-item, .ledger-row, .now-cell, .write-item, .corr-row').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+/* Reveal on scroll — section shells + staggered children (Apple-like) */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function revealEl(el) {
+  el.classList.add('in');
+}
+
+if (!reduceMotion) {
+  const childIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      revealEl(e.target);
+      childIo.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -12% 0px' });
+
+  const sectionIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      revealEl(e.target);
+      sectionIo.unobserve(e.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('section.chapter.reveal-section').forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop < window.innerHeight * 0.92) {
+      requestAnimationFrame(() => revealEl(section));
+    } else {
+      sectionIo.observe(section);
+    }
+
+    const children = section.querySelectorAll(
+      '.chapter-head, .note-prose, .work-item, .ledger-row, .now-cell, .write-item, .write-all, .corr-intro, .corr-row'
+    );
+    children.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', `${Math.min(i * 70, 420)}ms`);
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight * 0.92) {
+        requestAnimationFrame(() => revealEl(el));
+      } else {
+        childIo.observe(el);
+      }
+    });
+  });
+} else {
+  document.documentElement.classList.remove('js-anim');
+  document.querySelectorAll('section.chapter, .chapter-head, .work-item, .ledger-row, .now-cell, .write-item, .corr-row')
+    .forEach(revealEl);
+}
+
+/* Soft-eased nav / CTA scroll (feels closer to apple.com than native jump) */
+(function () {
+  if (reduceMotion) return;
+  const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+  function smoothScrollTo(targetY, duration = 900) {
+    const startY = window.scrollY;
+    const delta = targetY - startY;
+    if (Math.abs(delta) < 2) return;
+    const start = performance.now();
+
+    function frame(now) {
+      const t = Math.min((now - start) / duration, 1);
+      window.scrollTo(0, startY + delta * easeOutExpo(t));
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute('href');
+    if (!id || id === '#') return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 72;
+    smoothScrollTo(top, 950);
+    history.pushState(null, '', id);
+    closeMenu?.();
+  });
+})();
 
 /* Project data */
 const PROJECTS = {
